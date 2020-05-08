@@ -27,7 +27,7 @@ export default class TodoListItem extends Component {
     const {label} = this.props;
     const {done, important} = this.state;
 
-    let classes = 'todo-list-item';
+    let classes = 'todo-list-item text-info';
     classes += (done) ? ' done' : '';
     classes += (important) ? ' important' : '';
 
@@ -46,7 +46,7 @@ export default class TodoListItem extends Component {
 
         <button type="button"
                 onClick={this.onMarkImportant}
-                className="btn btn-outline-success btn-sm float-right">
+                className="btn btn-outline-warning btn-sm float-right">
         <i className="fa fa-exclamation" />
       </button>
       </span>

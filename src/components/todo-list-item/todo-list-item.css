@@ -1,5 +1,6 @@
 .todo-list-item {
   font-size: 1.25rem;
+  margin-bottom: 5px;
 }
 
 .todo-list-item button {
@@ -14,11 +15,13 @@
   user-select: none;
 }
 
-.todo-list-item.done .todo-list-item-label {
-  text-decoration: line-through;
-}
-
 .todo-list-item.important .todo-list-item-label {
   font-weight: bold;
-  color: steelblue;
+  color: orange;
+}
+
+
+.todo-list-item.done .todo-list-item-label {
+  text-decoration: line-through;
+  color: lightgray;
 }
