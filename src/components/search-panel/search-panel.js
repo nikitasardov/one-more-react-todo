@@ -1,13 +1,14 @@
 import React from 'react';
 
-const SearchPanel = () => {
-  const searchText ='Type here to search';
+const SearchPanel = ({label, onFiltersChange}) => {
 
   return (
-    <input 
+    <input
       type="text"
+      value={label}
+      onChange={(e) => onFiltersChange('label', e.target.value)}
       className="form-control search-panel"
-      placeholder={searchText} />
+      placeholder="Type here to search" />
   );
 };
 

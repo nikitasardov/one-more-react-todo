@@ -9,7 +9,9 @@ const AppHeader = ({toDo, done}) => {
           <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="true" />
           <label class="custom-control-label" for="darkSwitch">Dark switch</label>
         </div>*/}
-        <span className="badge badge-dark">{toDo} more to do, {done} done</span>
+        {(toDo === 0 && done === 0)
+          ? 'List is empty now'
+          : <span className="badge badge-dark">{toDo} more to do, {done} done</span>}
       </div>
     </div>
   );

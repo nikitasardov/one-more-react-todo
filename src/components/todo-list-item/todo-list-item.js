@@ -1,55 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class TodoListItem extends Component {
+const TodoListItem = (params) => {
 
-  state = {
-    important: false,
-    done: false
-  }
+  const {label, done, important, onToggleDone, onDeleted, onToggleImportant} = params;
 
-  onLabelClick = () => {
-    this.setState(({done}) => {
-      return {
-        done: !done
-      };
-    });
-  };
+  let classes = 'todo-list-item text-info';
+  classes += (done) ? ' done' : '';
+  classes += (important) ? ' important' : '';
 
-  onMarkImportant = () => {
-    this.setState(({important}) => {
-      return {
-        important: !important
-      };
-    });
-  };
-
-  render() {
-    const {label} = this.props;
-    const {done, important} = this.state;
-
-    let classes = 'todo-list-item text-info';
-    classes += (done) ? ' done' : '';
-    classes += (important) ? ' important' : '';
-
-    return (
-      <span className={classes}>
-        <span
-          className="todo-list-item-label"
-          onClick={this.onLabelClick}>
-          {label}
-        </span>
-
-        <button type="button"
-                className="btn btn-outline-danger btn-sm float-right">
-          <i className="fa fa-trash-o" />
-        </button>
-
-        <button type="button"
-                onClick={this.onMarkImportant}
-                className="btn btn-outline-warning btn-sm float-right">
-        <i className="fa fa-exclamation" />
-      </button>
+  return (
+    <span className={classes}>
+      <span
+        className="todo-list-item-label"
+        title={(done) ? '' : 'Mark as done'}
+        onClick={onToggleDone}>
+        {label}
       </span>
-    );
-  }
+
+      <button type="button"
+              onClick={onDeleted}
+              title="Remove task"
+              className="btn btn-outline-danger btn-sm float-right">
+        <i className="fa fa-trash-o" />
+      </button>
+
+      <button type="button"
+              onClick={onToggleImportant}
+              title={(important) ? 'Not important' : 'Mark as important'}
+              className="btn btn-outline-warning btn-sm float-right">
+      <i className="fa fa-exclamation" />
+    </button>
+    </span>
+  );
 }
+
+export default TodoListItem;
